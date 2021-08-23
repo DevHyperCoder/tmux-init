@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Please modify as you see fit!
+
+PROJ_DIR=/tmp/test
+SESSION_NAME=test
+
+cd "$PROJ_DIR"
+
+tmux new -s "$SESSION_NAME" -d -n git # Make new tmux session, detach immediately
+
+tmux new-window -t "$SESSION_NAME":1 -n nvim # Make new win for editing
+tmux send-keys -t "$SESSION_NAME":1 nvim C-m # Send `nvim` to tmux win and press enter
+
+tmux new-window -t "$SESSION_NAME":2 -n run # Make new win for editing
+
+tmux new-window -t "$SESSION_NAME":3 # Make new win for editing
+
+tmux a -t "$SESSION_NAME"
+
+
